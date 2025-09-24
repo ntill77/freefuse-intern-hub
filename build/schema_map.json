@@ -1,0 +1,109 @@
+{
+  "schema_mapping": {
+    "announcements": {
+      "source_file": "Announcements 2789d1002a028009896acb0b26204eed_all.csv",
+      "target_file": "announcements.csv",
+      "column_mappings": {
+        "Title": "Title",
+        "Publish Date": "Publish Date", 
+        "Expires": "Expires",
+        "Status": "Status",
+        "Priority": "Priority",
+        "Summary": "Summary",
+        "Author": "Author",
+        "Link": "Link",
+        "Notes": "Notes"
+      },
+      "transformations": {
+        "Priority": "Normal -> Medium",
+        "Publish Date": "Parse to ISO YYYY-MM-DD format",
+        "Expires": "Parse to ISO YYYY-MM-DD format"
+      },
+      "target_schema": ["Title", "Publish Date", "Expires", "Status", "Priority", "Summary", "Author", "Link", "Notes"]
+    },
+    "contacts_stakeholders": {
+      "source_file": "Contacts & Stakeholders 2789d1002a02803e85b4d27f08eddc30_all.csv",
+      "target_file": "contacts_stakeholders.csv", 
+      "column_mappings": {
+        "Name": "Name",
+        "Role": "Role",
+        "Area": "Area", 
+        "Email": "Email",
+        "Slack/Channel": "Handle",
+        "Notes": "Notes"
+      },
+      "transformations": {
+        "Handle": "Combine Slack/Channel and Slack/Discord fields"
+      },
+      "dropped_columns": ["Office Hours", "Slack/Discord"],
+      "target_schema": ["Name", "Role", "Area", "Email", "Handle", "Notes"]
+    },
+    "intern_directory": {
+      "source_file": "Intern Directory 2789d1002a02801a85a7fe6266b2a731_all.csv",
+      "target_file": "intern_directory.csv",
+      "column_mappings": {
+        "Name": "Name",
+        "Cohort": "Cohort", 
+        "Track": "Track",
+        "Manager": "Manager",
+        "Email": "Email"
+      },
+      "dropped_columns": ["Buddy/Mentor", "Start Date", "Status"],
+      "target_schema": ["Name", "Cohort", "Track", "Manager", "Email"]
+    },
+    "meeting_notes": {
+      "source_file": "Meetings Notes 2789d1002a0280d1b445cc9dfa02b270_all.csv",
+      "target_file": "meeting_notes.csv",
+      "column_mappings": {
+        "Meeting": "Title",
+        "Date": "Date",
+        "Attendees": "Attendees", 
+        "Decisions": "Decisions",
+        "Action Items": "Action Items"
+      },
+      "transformations": {
+        "Date": "Parse to ISO YYYY-MM-DD format",
+        "Link": "Create empty Link column - not in source data"
+      },
+      "dropped_columns": ["Agenda", "Follow-Up Date", "Notes"],
+      "target_schema": ["Title", "Date", "Attendees", "Decisions", "Action Items", "Link"]
+    },
+    "onboarding_checklist": {
+      "source_file": "Onboarding Checklist 2789d1002a0280c2bc8ed49c50330a1e_all.csv", 
+      "target_file": "onboarding_checklist.csv",
+      "column_mappings": {
+        "Task": "Task",
+        "Status": "Status",
+        "Assignee": "Assignee",
+        "Due": "Due",
+        "Category": "Category/Tags",
+        "Notes": "Notes",
+        "Intern": "Intern"
+      },
+      "transformations": {
+        "Due": "Parse to ISO YYYY-MM-DD format",
+        "Empty rows": "Remove empty rows"
+      },
+      "dropped_columns": ["Owner", "Evidence Link"],
+      "target_schema": ["Task", "Status", "Assignee", "Due", "Category/Tags", "Notes", "Intern"]
+    },
+    "resources_library": {
+      "source_file": "Resources Library 2789d1002a0280a19272e770e129e670_all.csv",
+      "target_file": "resources_library.csv", 
+      "column_mappings": {
+        "Title": "Title",
+        "Type": "Type",
+        "Summary": "Summary",
+        "Link": "Link", 
+        "Owner": "Owner"
+      },
+      "dropped_columns": ["Audience", "Topic", "Updated"],
+      "target_schema": ["Title", "Type", "Summary", "Link", "Owner"]
+    }
+  },
+  "data_quality_notes": {
+    "date_format": "Source dates in 'Month DD, YYYY' format converted to ISO YYYY-MM-DD",
+    "missing_data": "Empty cells preserved as empty in output",
+    "enum_standardization": "Priority 'Normal' mapped to 'Medium' for consistency"
+  }
+}

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeFuse – Intern Onboarding Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-rocket"></i> FreeFuse – Intern Onboarding Hub</h1>
+                <p>Your central hub for announcements, tasks, resources, meetings, and contacts.</p>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-section="dashboard">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </button>
+            <button class="nav-tab" data-section="announcements">
+                <i class="fas fa-bullhorn"></i> Announcements
+            </button>
+            <button class="nav-tab" data-section="tasks">
+                <i class="fas fa-tasks"></i> Onboarding Checklist
+            </button>
+            <button class="nav-tab" data-section="resources">
+                <i class="fas fa-folder-open"></i> Resources
+            </button>
+            <button class="nav-tab" data-section="meetings">
+                <i class="fas fa-calendar-alt"></i> Meeting Notes
+            </button>
+            <button class="nav-tab" data-section="contacts">
+                <i class="fas fa-users"></i> Contacts
+            </button>
+            <button class="nav-tab" data-section="interns">
+                <i class="fas fa-graduation-cap"></i> Intern Directory
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-bullhorn"></i> Recent Announcements</h3>
+                        <div id="recent-announcements" class="card-content">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-tasks"></i> My Tasks</h3>
+                        <div id="my-tasks" class="card-content">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-calendar-alt"></i> Upcoming Meetings</h3>
+                        <div id="upcoming-meetings" class="card-content">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-chart-bar"></i> Quick Stats</h3>
+                        <div id="quick-stats" class="card-content">
+                            <!-- Populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Announcements Section -->
+            <section id="announcements" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-bullhorn"></i> Announcements</h2>
+                    <div class="view-controls">
+                        <button class="view-btn active" data-view="table">Table</button>
+                        <button class="view-btn" data-view="board">Board</button>
+                    </div>
+                </div>
+                
+                <div class="filters">
+                    <select id="announcement-status-filter">
+                        <option value="">All Status</option>
+                        <option value="Published">Published</option>
+                        <option value="Draft">Draft</option>
+                        <option value="Archived">Archived</option>
+                    </select>
+                    <select id="announcement-priority-filter">
+                        <option value="">All Priority</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+
+                <div id="announcements-content" class="data-content">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Tasks Section -->
+            <section id="tasks" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-tasks"></i> Onboarding Checklist</h2>
+                    <div class="view-controls">
+                        <button class="view-btn active" data-view="board">Board</button>
+                        <button class="view-btn" data-view="table">Table</button>
+                        <button class="view-btn" data-view="calendar">Calendar</button>
+                    </div>
+                </div>
+                
+                <div class="filters">
+                    <select id="task-status-filter">
+                        <option value="">All Status</option>
+                        <option value="Not Started">Not Started</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Blocked">Blocked</option>
+                        <option value="Done">Done</option>
+                    </select>
+                    <input type="text" id="task-assignee-filter" placeholder="Filter by assignee...">
+                </div>
+
+                <div id="tasks-content" class="data-content">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Resources Section -->
+            <section id="resources" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-folder-open"></i> Resources Library</h2>
+                    <div class="view-controls">
+                        <button class="view-btn active" data-view="table">Table</button>
+                        <button class="view-btn" data-view="gallery">Gallery</button>
+                    </div>
+                </div>
+                
+                <div class="filters">
+                    <select id="resource-type-filter">
+                        <option value="">All Types</option>
+                        <option value="Doc">Document</option>
+                        <option value="Template">Template</option>
+                        <option value="Tool">Tool</option>
+                        <option value="Policy">Policy</option>
+                        <option value="Link">Link</option>
+                    </select>
+                </div>
+
+                <div id="resources-content" class="data-content">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Meetings Section -->
+            <section id="meetings" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-calendar-alt"></i> Meeting Notes</h2>
+                    <div class="view-controls">
+                        <button class="view-btn active" data-view="calendar">Calendar</button>
+                        <button class="view-btn" data-view="table">Table</button>
+                    </div>
+                </div>
+                
+                <div class="filters">
+                    <input type="date" id="meeting-date-filter" placeholder="Filter by date...">
+                    <input type="text" id="meeting-decisions-filter" placeholder="Filter by decisions...">
+                </div>
+
+                <div id="meetings-content" class="data-content">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Contacts Section -->
+            <section id="contacts" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> Contacts & Stakeholders</h2>
+                    <div class="view-controls">
+                        <button class="view-btn active" data-view="table">Table</button>
+                        <button class="view-btn" data-view="gallery">Gallery</button>
+                    </div>
+                </div>
+                
+                <div class="filters">
+                    <select id="contact-area-filter">
+                        <option value="">All Areas</option>
+                        <option value="HR">HR</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Management">Management</option>
+                    </select>
+                </div>
+
+                <div id="contacts-content" class="data-content">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Interns Section -->
+            <section id="interns" class="content-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-graduation-cap"></i> Intern Directory</h2>
+                    <div class="view-controls">
+                        <button class="view-btn active" data-view="gallery">Gallery</button>
+                        <button class="view-btn" data-view="table">Table</button>
+                    </div>
+                </div>
+                
+                <div class="filters">
+                    <select id="intern-cohort-filter">
+                        <option value="">All Cohorts</option>
+                        <option value="Fall">Fall</option>
+                        <option value="Spring">Spring</option>
+                        <option value="Summer">Summer</option>
+                    </select>
+                    <select id="intern-track-filter">
+                        <option value="">All Tracks</option>
+                        <option value="Engineering">Engineering</option>
+                        <option value="Design">Design</option>
+                        <option value="Marketing">Marketing</option>
+                    </select>
+                </div>
+
+                <div id="interns-content" class="data-content">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
